@@ -20,7 +20,7 @@ entity register_file is
 end register_file;
 
 architecture struct of register_file is
-	component reg32
+	component reg
 		generic (width : positive);
 		port (
 			clk      : in  std_logic;
@@ -64,12 +64,12 @@ begin
 		sel => sel_out2);
 
 	reg_gen: for i in 0 to 14 generate
-		reg: reg32 generic map(width => 32)
+		reg_inst: reg generic map(width => 32)
 		port map(clk => clk, enable => enable_lines(i), reset => reset, 
 			data_in => data_in, data_out => outdata_lines(i));
 	end generate;
 
-	pc: reg32 generic map(width => 32)
+	pc: reg generic map(width => 32)
 	port map(clk => clk, enable => enable_lines(15), reset => reset, 
 		data_in => data_in, data_out => pc_pre_sum);
 
