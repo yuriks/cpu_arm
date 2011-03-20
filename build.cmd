@@ -1,5 +1,6 @@
 @echo off
 set BUILD_FILES=general.vhdl bus_buffer.vhdl decoder16.vhdl latch.vhdl mux16.vhdl mux2.vhdl reg.vhdl register_file.vhdl
+set BUILD_FILES=%BUILD_FILES% adder.vhdl alu.vhdl
 if [%1] neq [] (
 	set BUILD_FILES=%BUILD_FILES% %1%.vhdl
 )
